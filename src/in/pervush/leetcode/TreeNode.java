@@ -11,4 +11,16 @@ public class TreeNode {
         this.left = left;
         this.right = right;
     }
+
+    @Override
+    public String toString() {
+        if (left != null && right != null) {
+            return "{v=" + val + ", l=" + left + ", r=" + right + '}';
+        } else if (left != null) {
+            return "{v=" + val + ", l=" + left + '}';
+        } else if (right != null) {
+            return "{v=" + val + ", r=" + right + '}';
+        }
+        return "{v=" + val + '}';
+    }
 }
