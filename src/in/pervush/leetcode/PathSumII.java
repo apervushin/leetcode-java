@@ -1,5 +1,7 @@
 package in.pervush.leetcode;
 
+import in.pervush.leetcode.model.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 

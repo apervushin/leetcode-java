@@ -1,5 +1,7 @@
 package in.pervush.leetcode;
 
+import in.pervush.leetcode.model.TreeNode;
+
 /**
  * https://leetcode.com/problems/increasing-order-search-tree/
  */
@@ -55,9 +57,9 @@ public class IncreasingOrderSearchTree {
         root.right.right = new TreeNode(8);
         root.right.right.left = new TreeNode(7);
         root.right.right.right = new TreeNode(9);
-//        in.pervush.leetcode.TreeNode root = new in.pervush.leetcode.TreeNode(2);
-//        root.left = new in.pervush.leetcode.TreeNode(1);
-//        root.right = new in.pervush.leetcode.TreeNode(3);
+//        in.pervush.leetcode.model.TreeNode root = new in.pervush.leetcode.model.TreeNode(2);
+//        root.left = new in.pervush.leetcode.model.TreeNode(1);
+//        root.right = new in.pervush.leetcode.model.TreeNode(3);
 
         var result = solution.increasingBST(root);
         while (result != null) {
