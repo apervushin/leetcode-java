@@ -1,7 +1,5 @@
 package in.pervush.leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.com/problems/number-of-ways-to-select-buildings/
  */
@@ -9,65 +7,27 @@ public class NumberOfWaysToSelectBuildings {
 
 
     public static long numberOfWays(final String s) {
-//        System.out.println(Arrays.toString(s.toCharArray()));
-        final int[] dp0 = new int[s.length()];
-        final int[] dp1 = new int[s.length()];
+        int cnt0 = 0;
+        int cnt1 = 0;
+        long cnt01 = 0;
+        long cnt10 = 0;
+        long cnt010 = 0;
+        long cnt101 = 0;
 
-        dp0[0] = s.charAt(0) == '0' ? 1 : 0;
-        dp1[0] = s.charAt(0) == '1' ? 1 : 0;
-
-        for (int i = 1; i < s.length(); ++i) {
+        for (int i = 0; i < s.length(); ++i) {
             int c = s.charAt(i) - '0';
             if (c == 0) {
-                dp0[i] = dp0[i - 1] + 1;
-                dp1[i] = dp1[i - 1];
+                cnt0++;
+                cnt10 += cnt1;
+                cnt010 += cnt01;
             } else {
-                dp0[i] = dp0[i - 1];
-                dp1[i] = dp1[i - 1] + 1;
+                cnt1++;
+                cnt01 += cnt0;
+                cnt101 += cnt10;
             }
         }
 
-//        System.out.println("1:");
-//        System.out.println("dp0:   " + Arrays.toString(dp0));
-//        System.out.println("dp1:   " + Arrays.toString(dp1));
-
-        final long[] dp01 = new long[s.length()];
-        final long[] dp10 = new long[s.length()];
-
-        for (int i = 1; i < s.length(); ++i) {
-            int c = s.charAt(i) - '0';
-            if (c == 0) {
-                dp01[i] = dp01[i - 1];
-                dp10[i] = dp10[i - 1] + dp1[i - 1];
-            } else {
-                dp01[i] = dp01[i - 1] + dp0[i - 1];
-                dp10[i] = dp10[i - 1];
-            }
-        }
-
-//        System.out.println("2:");
-//        System.out.println("dp01:  " + Arrays.toString(dp01));
-//        System.out.println("dp10:  " + Arrays.toString(dp10));
-
-        final long[] dp010 = new long[s.length()];
-        final long[] dp101 = new long[s.length()];
-
-        for (int i = 2; i < s.length(); ++i) {
-            int c = s.charAt(i) - '0';
-            if (c == 0) {
-                dp010[i] = dp010[i - 1] + dp01[i - 1];
-                dp101[i] = dp101[i - 1];
-            } else {
-                dp010[i] = dp010[i - 1];
-                dp101[i] = dp101[i - 1] + dp10[i - 1];
-            }
-        }
-
-//        System.out.println("3:");
-//        System.out.println("dp010: " + Arrays.toString(dp010));
-//        System.out.println("dp101: " + Arrays.toString(dp101));
-
-        return dp010[dp0.length - 1] + dp101[dp1.length - 1];
+        return cnt010 + cnt101;
     }
 
     public static void main(final String[] args) {
