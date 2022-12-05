@@ -10,12 +10,26 @@ public class PrintUtils {
         System.out.println(Arrays.toString(arr));
     }
 
+    public static void print(final double[] arr) {
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void print(final long[] arr) {
+        System.out.println(Arrays.toString(arr));
+    }
+
     public static void print(final String[] arr) {
         System.out.println(Arrays.toString(arr));
     }
 
     public static void print(final int[][] arr) {
-        for (final int[] row : arr) {
+        for (final var row : arr) {
+            System.out.println(Arrays.toString(row));
+        }
+    }
+
+    public static void print(final long[][] arr) {
+        for (final var row : arr) {
             System.out.println(Arrays.toString(row));
         }
     }

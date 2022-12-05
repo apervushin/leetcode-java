@@ -2,6 +2,9 @@ package in.pervush.leetcode.problems;
 
 import java.util.BitSet;
 
+/**
+ * https://leetcode.com/problems/detonate-the-maximum-bombs/
+ */
 public class DetonateTheMaximumBombs {
 
     public static int maximumDetonation(final int[][] bombs) {

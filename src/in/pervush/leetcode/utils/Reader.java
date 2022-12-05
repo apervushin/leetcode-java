@@ -2,7 +2,9 @@ package in.pervush.leetcode.utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Reader {
@@ -35,6 +37,18 @@ public class Reader {
 
             return result;
         } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public static int[][] read(final String filePath) {
+        try (final BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            final var input = reader.readLine();
+            final String[] lines = input.substring(2, input.length() - 2).split("],\\[");
+            return Arrays.stream(lines).map(v -> v.split(","))
+                    .map(v -> new int[] {Integer.parseInt(v[0]), Integer.parseInt(v[1])})
+                    .toArray(int[][]::new);
+        } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
     }
