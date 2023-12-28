@@ -1,25 +1,27 @@
 package in.pervush.leetcode.problems;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * https://leetcode.com/problems/power-of-four/
  */
 public class PowerOfFour {
 
-    public static boolean isPowerOfFour(int n) {
-        if (n == 1) {
-            return true;
-        }
+    private static final Set<Integer> POWER = new HashSet<>();
+
+    static {
+        POWER.add(1);
+
         int val = 1;
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 15; i++) {
             val *= 4;
-            if (val == n) {
-                return true;
-            }
-            if (val > n) {
-                return false;
-            }
+            POWER.add(val);
         }
-        return false;
+    }
+
+    public static boolean isPowerOfFour(int n) {
+        return POWER.contains(n);
     }
 
     public static void main(String[] args) {
